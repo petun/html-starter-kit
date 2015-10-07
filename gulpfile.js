@@ -14,7 +14,7 @@ var gulp = require('gulp'),
 
 
 gulp.task('styles', function() {
-    return sass('src/scss/init.scss', { style: 'expanded' })
+    return sass('src/scss/main.scss', { style: 'expanded' })
         .pipe(autoprefixer('last 2 version'))
         .pipe(gulp.dest('css'))
         .pipe(rename({suffix: '.min'}))
@@ -34,3 +34,6 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('js'))
         .pipe(notify({ message: 'Scripts task complete' }));
 });
+
+
+gulp.task('default', ['styles', 'scripts']);
