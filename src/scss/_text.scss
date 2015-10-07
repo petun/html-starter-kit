@@ -1,0 +1,23 @@
+/* text block */
+.text {line-height: 150%;}
+.text h1,.text h2,.text h3,.text h4,.text h5 { font-weight: bold;  margin: 0 0 10px;}
+.text h1 {font-size: 20px; }
+.text h2 {font-size: 18px; }
+.text h3 {font-size: 16px; }
+.text h4 {font-size: 15px; }
+.text h5 {font-size: 14px; }
+.text p {margin: 0 0 15px;}
+.text a {text-decoration: none;}
+.text a:hover {text-decoration: underline;}
+.text strong {font-weight: bold;}
+.text em {font-style: italic;}
+
+.text blockquote {padding: 10px; background: #eee; border-left: 7px #999 solid; margin: 0 0 15px;}
+.text img {padding: 2px; border: 1px #eee solid; margin: 0 5px 5px 0;}
+
+.text ul {margin: 0 0 15px 20px;}
+.text ul li {padding: 0;}
+
+.text table {border-collapse: collapse; margin: 0 0 15px;}
+.text table td,.text table th {padding: 5px; border: 1px #eee solid;}
+.text table th {text-align: center; font-weight: bold;}
