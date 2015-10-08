@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
     bower = require('gulp-bower'),
-    sass = require('gulp-ruby-sass'),
+    sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
@@ -17,16 +17,17 @@ var gulp = require('gulp'),
 
 gulp.task('bower', function() {
     return bower()
-        .pipe(gulp.dest('lib/'))
+        .pipe(gulp.dest('dist/lib/'))
 });
 
 gulp.task('styles', function() {
-    return sass('src/scss/main.scss', { style: 'expanded' })
+    return gulp.src('./src/scss/main.scss')
+        .pipe(sass({outputStyle: 'compact'}).on('error', sass.logError ))
         .pipe(autoprefixer('last 2 version'))
-        .pipe(gulp.dest('css'))
+        .pipe(gulp.dest('dist/css'))
         .pipe(rename({suffix: '.min'}))
         .pipe(minifycss())
-        .pipe(gulp.dest('css'))
+        .pipe(gulp.dest('dist/css'))
         .pipe(notify({ message: 'Styles task complete' }));
 });
 
@@ -35,11 +36,15 @@ gulp.task('scripts', function() {
         .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter('default'))
         .pipe(concat('main.js'))
-        .pipe(gulp.dest('js'))
+        .pipe(gulp.dest('dist/js'))
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())
-        .pipe(gulp.dest('js'))
+        .pipe(gulp.dest('dist/js'))
         .pipe(notify({ message: 'Scripts task complete' }));
+});
+
+gulp.task('watch', function () {
+    gulp.watch('./src/scss/**/*.scss', ['styles']);
 });
 
 
