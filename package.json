@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
-  "dependencies": {},
+  "dependencies": {
+    "imagemin-pngquant": "^4.2.0"
+  },
   "devDependencies": {
     "bower": "^1.5.3",
     "del": "^2.0.2",
