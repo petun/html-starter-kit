@@ -11,7 +11,8 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
-    del = require('del');
+    del = require('del'),
+    slim = require("gulp-slim");
 
 
 
@@ -43,9 +44,19 @@ gulp.task('scripts', function() {
         .pipe(notify({ message: 'Scripts task complete' }));
 });
 
+gulp.task('slim', function() {
+    return gulp.src("./src/slim/*.slim")
+        .pipe(slim({
+            pretty: true,
+            require: 'slim/include',
+            options: 'include_dirs=[".", "src/slim/blocks"]'
+        }))
+        .pipe(gulp.dest("./dist/"));
+});
+
 gulp.task('watch', function () {
     gulp.watch('./src/scss/**/*.scss', ['styles']);
 });
 
 
-gulp.task('default', ['styles', 'scripts', 'bower']);
+gulp.task('default', ['styles', 'scripts', 'bower', 'slim']);
