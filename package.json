@@ -1,10 +1,9 @@
 {
-  "name": "nmp-test",
-  "version": "1.0.0",
+  "name": "html-starter-kit",
+  "version": "0.0.2",
   "description": "",
   "main": "gulpfile.js",
   "dependencies": {
-    "imagemin-pngquant": "^4.2.0"
   },
   "devDependencies": {
     "bower": "^1.5.3",
@@ -21,12 +20,13 @@
     "gulp-notify": "^2.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.0.4",
-    "gulp-slim": "^0.3.0",
-    "gulp-uglify": "^1.4.1"
+    "gulp-jade": "^1.1.0",
+    "gulp-uglify": "^1.4.1",
+    "imagemin-pngquant": "^4.2.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "petun (petun911@gmail.com)",
   "license": "ISC"
 }

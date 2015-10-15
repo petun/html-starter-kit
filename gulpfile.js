@@ -13,8 +13,12 @@ var gulp = require('gulp'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
     del = require('del'),
-    slim = require("gulp-slim");
+    jade = require('gulp-jade');
 
+
+ function logError (err) {
+     console.log(err);
+ }
 
 
 gulp.task('bower', function() {
@@ -46,13 +50,14 @@ gulp.task('scripts', function() {
         .pipe(notify({ message: 'Scripts task complete' }));
 });
 
-gulp.task('slim', function() {
-    return gulp.src("./src/slim/*.slim")
-        .pipe(slim({
-            pretty: true,
-            require: 'slim/include',
-            options: 'include_dirs=[".", "src/slim/blocks"]'
-        }))
+gulp.task('jade', function() {
+    var YOUR_LOCALS = {};
+
+    return gulp.src("./src/jade/*.jade")
+        .pipe(jade({
+            locals: YOUR_LOCALS,
+            pretty: true
+        })).on('error', logError)
         .pipe(gulp.dest("./dist/"))
         .pipe(livereload());
 });
@@ -69,9 +74,13 @@ gulp.task('images', function() {
 });
 
 gulp.task('watch', function () {
+    gulp.run('styles');
+    gulp.run('jade');
+    gulp.run('scripts');
+
     livereload.listen();
     gulp.watch('./src/scss/**/*.scss', ['styles']);
-    gulp.watch('./src/slim/**/*.slim', ['slim']);
+    gulp.watch('./src/jade/**/*.jade', ['jade']);
     gulp.watch('./src/js/**/*.js', ['scripts']);
 });
 

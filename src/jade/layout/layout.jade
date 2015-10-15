@@ -1,0 +1,35 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="x-ua-compatible" content="ie=edge")
+
+    title Page title here
+    meta(name="description" content="")
+    meta(name="keywords" content="")
+
+    link(rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css")
+    link(rel="stylesheet" href="css/main.min.css")
+
+    // additional css
+    block css
+  body
+    #wrapper
+      .header
+        .container-fluid
+          .row
+            .col-md-12 HEADER HERE
+
+
+      .content
+        .container-fluid
+          block content
+
+      .footer
+        .container-fluid
+
+    // additional script11
+    script(type="text/javascript" src="lib/jquery/dist/jquery.min.js")
+    script(type="text/javascript" src="lib/bootstrap/dist/js/bootstrap.min.js")
+    script(type="text/javascript" src="js/main.min.js")
+    block scripts
