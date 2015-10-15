@@ -16,11 +16,6 @@ var gulp = require('gulp'),
     jade = require('gulp-jade');
 
 
- function logError (err) {
-     console.log(err);
- }
-
-
 gulp.task('bower', function() {
     return bower()
         .pipe(gulp.dest('dist/lib/'))
@@ -51,15 +46,21 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('jade', function() {
-    var YOUR_LOCALS = {};
+    var YOUR_LOCALS = {
+        pageTitle: 'App Page Title'
+    };
 
     return gulp.src("./src/jade/*.jade")
         .pipe(jade({
             locals: YOUR_LOCALS,
             pretty: true
-        })).on('error', logError)
+        })).on('error', function(err) {
+            console.log(err);
+            this.emit('end');
+        })
         .pipe(gulp.dest("./dist/"))
-        .pipe(livereload());
+        .pipe(livereload())
+        .pipe(notify({ message: 'Jade task complete' }));
 });
 
 
@@ -85,4 +86,4 @@ gulp.task('watch', function () {
 });
 
 
-gulp.task('default', ['styles', 'scripts', 'bower', 'slim']);
+gulp.task('default', ['styles', 'scripts', 'bower', 'jade']);

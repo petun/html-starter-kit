@@ -1,8 +1,12 @@
 {
   "name": "html-starter-kit",
-  "version": "0.0.2",
-  "description": "",
+  "version": "0.0.21",
+  "description": "Html Starter Kit with gulp, bower, sass and jade",
   "main": "gulpfile.js",
+  "repository" :
+  { "type" : "git"
+  , "url" : "https://github.com/petun/html-starter-kit"
+  },
   "dependencies": {
   },
   "devDependencies": {

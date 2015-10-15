@@ -3,3 +3,20 @@ extends ./layout/layout.jade
 block content
   h1 Page Title
   p test content here...
+    a(href="#") Test Link 2
+
+  - var object = {isTrue: true, isFalse: false};
+  if (object.isTrue)
+      h2 Object is true
+  else
+      h2 Object is False
+
+  p This is as is - <a href="">123<img src="" alt="" /></a> and text after
+
+  ul
+      - for (var x = 0; x < 3; x++)
+        include ./include/list-item
+
+  ul
+    each val, index in ['zero', 'one', 'two']
+        li= index + ': ' + val
