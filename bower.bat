@@ -6,6 +6,6 @@ rem -------------------------------------------------------------
 
 @setlocal
 
-node "node_modules\bower\bin\bower" %*
+node "..\node_modules\bower\bin\bower" %*
 
 @endlocal

@@ -1,3 +1,4 @@
+block vars
 doctype html
 html(lang="en")
   head
@@ -8,11 +9,12 @@ html(lang="en")
     meta(name="description" content="")
     meta(name="keywords" content="")
 
-    link(rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css")
+    block css
+
+    link(rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css")
     link(rel="stylesheet" href="css/main.css")
 
-    // additional css
-    block css
+
   body
     #wrapper
       .header
@@ -28,8 +30,8 @@ html(lang="en")
       .footer
         .container-fluid
 
-    // additional script11
-    script(type="text/javascript" src="lib/jquery/dist/jquery.min.js")
-    script(type="text/javascript" src="lib/bootstrap/dist/js/bootstrap.min.js")
-    script(type="text/javascript" src="js/main.js")
+
+    script(type="text/javascript" src="vendor/jquery/jquery-1.11.3.min.js")
+    script(type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js")
     block scripts
+    script(type="text/javascript" src="js/main.js")

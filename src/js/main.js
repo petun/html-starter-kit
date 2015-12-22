@@ -1,5 +1,5 @@
 jQuery(function( $) {
     'use strict';
 
-    console.log('test ok');
+    console.log('init main page...');
 });

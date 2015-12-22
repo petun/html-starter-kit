@@ -22,6 +22,14 @@ gulp.task('bower', function() {
         .pipe(gulp.dest('dist/lib/'))
 });
 
+gulp.task('vendor', function() {
+    return gulp.src('./src/vendor/**/*').pipe(gulp.dest('dist/vendor'));
+});
+
+gulp.task('fonts', function() {
+    return gulp.src('./src/fonts/**/*').pipe(gulp.dest('dist/fonts'));
+});
+
 gulp.task('styles', function() {
     return gulp.src('./src/scss/main.scss')
         .pipe(sass({outputStyle: 'compact'}).on('error', sass.logError ))
@@ -35,13 +43,13 @@ gulp.task('styles', function() {
 });
 
 gulp.task('scripts', function() {
-    return gulp.src(['src/js/**/*.js'])
+    gulp.src(['src/js/**/*.js'])
         .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter('default'))
         .pipe(concat('main.js'))
         .pipe(gulp.dest('dist/js'))
         .pipe(rename({suffix: '.min'}))
-        .pipe(uglify())
+        .pipe(uglify().on('error', function(){} ))
         .pipe(gulp.dest('dist/js'))
         .pipe(notify({ message: 'Scripts task complete' }));
 });
