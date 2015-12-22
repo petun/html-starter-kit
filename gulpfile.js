@@ -12,6 +12,7 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
+    watch = require('gulp-watch'),
     del = require('del'),
     jade = require('gulp-jade');
 
@@ -80,9 +81,16 @@ gulp.task('watch', function () {
     gulp.run('scripts');
 
     livereload.listen();
-    gulp.watch('./src/scss/**/*.scss', ['styles']);
-    gulp.watch('./src/jade/**/*.jade', ['jade']);
-    gulp.watch('./src/js/**/*.js', ['scripts']);
+
+    watch(['./src/scss/**/*.scss'],function(){
+        gulp.run('styles');
+    });
+    watch(['./src/jade/**/*.jade'],function(){
+        gulp.run('jade');
+    });
+    watch(['./src/js/**/*.js'],function(){
+        gulp.run('scripts');
+    });
 });
 
 
